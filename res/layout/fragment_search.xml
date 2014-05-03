@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/food_img1" >
+    
+    <ImageView 
+        android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="#AA000000"
+        />
+
+    <Button
+        android:id="@+id/button_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
+        android:textSize="16sp"
+        android:background="@drawable/rounded_corner_search"
+        android:text="@string/search"
+        android:textColor="#000000"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/button_qrscan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_search"
+        android:layout_marginLeft="15dp"
+        android:textSize="16sp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_corner_search"
+        android:text="@string/qrscan"
+        android:textColor="#000000"
+        android:textStyle="bold" />
+
+</RelativeLayout>
