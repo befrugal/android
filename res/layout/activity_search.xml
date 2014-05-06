@@ -4,12 +4,11 @@
     android:layout_height="match_parent"
     android:background="@drawable/food_img1"
     tools:context=".SearchActivity" >
-    
-    <ImageView 
+
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#CC000000"
-        />
+        android:background="#CC000000" />
 
     <EditText
         android:id="@+id/edittext_search"
@@ -25,11 +24,22 @@
         android:textSize="16sp"
         android:textStyle="bold" />
 
+    <TextView
+        android:id="@+id/textview_listheader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_below="@+id/edittext_search"
+        android:layout_marginTop="10dp"
+        android:text="@string/popular_searches" />
+
     <ListView
         android:id="@+id/listview_suggestions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/edittext_search"
+        android:layout_below="@+id/textview_listheader"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:layout_marginTop="10dp" />

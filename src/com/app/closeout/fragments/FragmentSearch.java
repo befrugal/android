@@ -37,6 +37,7 @@ public class FragmentSearch extends Fragment implements OnClickListener {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+
 		View layout_search = inflater.inflate(R.layout.fragment_search,
 				container, false);
 
@@ -67,9 +68,9 @@ public class FragmentSearch extends Fragment implements OnClickListener {
 			startActivity(intent);
 			break;
 		case R.id.button_qrscan:
-			//code to call qr scanner will go here
+			// code to call qr scanner will go here
 			break;
 		}
 	}
-	
+
 }

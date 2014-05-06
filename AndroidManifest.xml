@@ -30,6 +30,12 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
+        <activity
+            android:name="com.app.closeout.SearchResultActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/TabTheme"
+            android:label="@string/title_activity_search_result" >
+        </activity>
     </application>
 
 </manifest>

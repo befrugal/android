@@ -13,12 +13,15 @@
     <string name="title_activity_search">SearchActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="search_">Search...</string>
-    
-    
+    <string name="popular_searches">POPULAR SEARCHES</string>
+    <string name="share">Share</string>
+
     <string-array name="suggestion_list">
         <item>Top Deals</item>
         <item>Trending Deals</item>
         <item>You can avail</item>
     </string-array>
+
+    <string name="title_activity_search_result">SearchResultActivity</string>
 
 </resources>
