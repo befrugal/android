@@ -9,7 +9,7 @@ import com.app.closeout.R;
 import com.app.closeout.fragments.FragmentAvail;
 import com.app.closeout.fragments.FragmentEarnPoints;
 import com.app.closeout.fragments.FragmentFeed;
-import com.app.closeout.fragments.FragmentNearby;
+import com.app.closeout.fragments.FragmentTrending;
 import com.app.closeout.fragments.FragmentSearch;
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
@@ -32,7 +32,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 			fragment = new FragmentSearch();
 			break;
 		case 1:
-			fragment = new FragmentNearby();
+			fragment = new FragmentTrending();
 			break;
 		case 2:
 			fragment = new FragmentFeed();
@@ -59,7 +59,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 		case 0:
 			return res.getString(R.string.title_search);
 		case 1:
-			return res.getString(R.string.title_nearby);
+			return res.getString(R.string.title_trending);
 		case 2:
 			return res.getString(R.string.title_feeds);
 		case 3:

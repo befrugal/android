@@ -1,18 +1,26 @@
 package com.app.closeout.fragments;
 
-import com.app.closeout.R;
+import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Context;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.content.Context;
-import android.os.Bundle;
+import android.widget.ListView;
+
+import com.app.closeout.R;
+import com.app.closeout.adapter.FeedListAdapter;
+import com.app.closeout.model.Feeds;
 
 public class FragmentFeed extends Fragment {
 	
 	Context context;
+	ListView feedList;
+	ArrayList<Feeds> feedData;
+	FeedListAdapter feedListAdapter;
 	
 	public FragmentFeed(){
 	}
@@ -32,6 +40,21 @@ public class FragmentFeed extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View layout_feed = inflater.inflate(R.layout.fragment_feed, container, false);
+		
+		feedData = new ArrayList<Feeds>();
+		for (int i = 0; i < 10; i++) {
+			Feeds feedsObj = new Feeds();
+			feedsObj.setRestaurantName("Restaurant no" + (i + 1));
+			feedsObj.setUsername("Username " + (i+1));
+			feedData.add(feedsObj);
+		}
+		
+		feedList = (ListView) layout_feed.findViewById(R.id.listview_feeds);
+		
+		feedListAdapter = new FeedListAdapter(feedData, context);
+		
+		feedList.setAdapter(feedListAdapter);
+		
 		return layout_feed;
 	}
 	

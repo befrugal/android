@@ -2,11 +2,33 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#A5A59B"
     android:orientation="vertical" >
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/textview_feedsheader"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="feed tab" />
+        android:background="#FFFFFF"
+        android:padding="5dp"
+        android:text="@string/your_feed"
+        android:textColor="#0F100A"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="#0F100A" />
+
+    <ListView
+        android:id="@+id/listview_feeds"
+        android:layout_width="fill_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:scrollbars="none"
+        android:layout_marginRight="10dp"
+        android:layout_height="wrap_content"
+        android:divider="#00000000"
+        android:dividerHeight="10dp" />
 
 </LinearLayout>

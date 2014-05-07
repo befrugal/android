@@ -69,7 +69,7 @@ public class MainActivity extends FragmentActivity implements
 				break;
 			case 1:
 				actionBar.addTab(actionBar.newTab()
-						.setCustomView(R.layout.tab_nearby)
+						.setCustomView(R.layout.tab_trending)
 						.setTabListener(this));
 				break;
 			case 2:
