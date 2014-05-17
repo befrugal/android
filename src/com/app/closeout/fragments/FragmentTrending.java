@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 
+import com.app.closeout.MainActivity;
 import com.app.closeout.R;
 import com.app.closeout.adapter.SearchResultAdapter;
 import com.app.closeout.model.RestaurantSearchData;
@@ -25,12 +26,13 @@ public class FragmentTrending extends Fragment {
 	ArrayList<RestaurantSearchData> restaurantSearchData;
 	int width;
 
-	public FragmentTrending() {
+	public FragmentTrending(Context context) {
+		this.context = context;
 	}
 
 	@Override
 	public void onAttach(Activity activity) {
-		context = activity.getApplicationContext();
+		//context = activity.getApplicationContext();
 		super.onAttach(activity);
 	}
 
@@ -44,21 +46,68 @@ public class FragmentTrending extends Fragment {
 			Bundle savedInstanceState) {
 		View layout_nearby = inflater.inflate(R.layout.fragment_trending,
 				container, false);
+		
+		ArrayList<String> restName = new ArrayList<String>();
+		restName.add("Toit");
+		restName.add("ABC");
+		restName.add("Barbeque Nation");
+		restName.add("Hunan");
+		restName.add("Punjab Grill");
+		restName.add("Copper Chimney");
+		restName.add("Little Italy");
+		restName.add("California Pizza Kitchen");
+		restName.add("Costa Coffee");
+		restName.add("Hard Rock Cafe");
+		
+		ArrayList<String> rating = new ArrayList<String>();
+		rating.add("3.9");
+		rating.add("3.7");
+		rating.add("3.6");
+		rating.add("4.0");
+		rating.add("3.4");
+		rating.add("3.9");
+		rating.add("3.3");
+		rating.add("3.4");
+		rating.add("3.8");
+		rating.add("4.0");
 
+		ArrayList<String> detail = new ArrayList<String>();
+		detail.add("100 Feet Road, Indiranagar");
+		detail.add("Magrath Road, Near MG Road, Bangalore");
+		detail.add("100 Feet Road, 2nd Stage, HAL, Indiranagar");
+		detail.add("Opposite California Pizza Kitchen, 5th Block, Koramangala");
+		detail.add("Opposite Forum Mall, 7th Block, Koramangala");
+		detail.add("100 Feet Road, HAL 2nd Stage, Indiranagar");
+		detail.add("100 Feet Road, HAL 2nd Stage, Indiranagar");
+		detail.add("Jyothi Nivas College Road, 5th Block, Koramangala");
+		detail.add("80 Feet Road, 4th Block, Koramangala");
+		detail.add("40, Off MG Road, St. Marks Road");
+		
+		ArrayList<String> deal = new ArrayList<String>();
+		deal.add("10% for 500 points");
+		deal.add("10% for 400 points");
+		deal.add("8% for 400 points");
+		deal.add("10% for 400 points");
+		deal.add("10% for 600 points");
+		deal.add("12% for 400 points");
+		deal.add("10% for 500 points");
+		deal.add("10% for 400 points");
+		deal.add("12 for 400 points");
+		deal.add("10% for 500 points");
+		
 		restaurantSearchData = new ArrayList<RestaurantSearchData>();
 		for (int i = 0; i < 10; i++) {
 			RestaurantSearchData restaurantSearchDataObj = new RestaurantSearchData();
 			restaurantSearchDataObj
-					.setRestaurantDetail("This is the restaurant no" + (i + 1));
-			restaurantSearchDataObj.setRestaurantRating(String
-					.valueOf((i + 1) * 0.5));
+					.setRestaurantDetail(detail.get(i));
+			restaurantSearchDataObj.setRestaurantRating(rating.get(i));
 			restaurantSearchDataObj
-					.setRestaurantName("Restaurant no" + (i + 1));
-			restaurantSearchDataObj.setRestaurantDeal("10% off for 500 points");
+					.setRestaurantName(restName.get(i));
+			restaurantSearchDataObj.setRestaurantDeal(deal.get(i));
 			restaurantSearchData.add(restaurantSearchDataObj);
 		}
 		searchResultAdapter = new SearchResultAdapter(context,
-				restaurantSearchData);
+				restaurantSearchData, FragmentTrending.this);
 		searchResultList = (ExpandableListView) layout_nearby
 				.findViewById(R.id.listview_trendingresults);
 
@@ -87,5 +136,10 @@ public class FragmentTrending extends Fragment {
 	public void onResume() {
 		super.onResume();
 	}
-
+	
+	public void changeTab(){
+		MainActivity mainActivity = new MainActivity();
+		mainActivity.changeTab();
+	}
+	
 }

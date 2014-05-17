@@ -1,5 +1,6 @@
 package com.app.closeout.adapter;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -15,10 +16,12 @@ import com.app.closeout.fragments.FragmentSearch;
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
 	Resources res;
+	Context context;
 
-	public SectionsPagerAdapter(FragmentManager fm, Resources res) {
+	public SectionsPagerAdapter(FragmentManager fm, Resources res, Context context) {
 		super(fm);
 		this.res = res;
+		this.context = context;
 	}
 
 	@Override
@@ -32,16 +35,16 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 			fragment = new FragmentSearch();
 			break;
 		case 1:
-			fragment = new FragmentTrending();
+			fragment = new FragmentTrending(context);
 			break;
 		case 2:
 			fragment = new FragmentFeed();
 			break;
 		case 3:
-			fragment = new FragmentAvail();
+			fragment = new FragmentEarnPoints();
 			break;
 		case 4:
-			fragment = new FragmentEarnPoints();
+			fragment = new FragmentAvail();
 			break;
 		}
 		return fragment;

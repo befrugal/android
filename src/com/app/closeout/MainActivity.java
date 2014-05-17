@@ -2,29 +2,30 @@ package com.app.closeout;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.Watson.OnOptionsItemSelectedListener;
 import android.support.v4.view.ViewPager;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.app.closeout.adapter.SectionsPagerAdapter;
+import com.app.closeout.fragments.SlidingMenuFragment;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu.OnOpenListener;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu.OnCloseListener;
 
 public class MainActivity extends FragmentActivity implements
 		ActionBar.TabListener {
 
-	/**
-	 * The {@link android.support.v4.view.PagerAdapter} that will provide
-	 * fragments for each of the sections. We use a
-	 * {@link android.support.v4.app.FragmentPagerAdapter} derivative, which
-	 * will keep every loaded fragment in memory. If this becomes too memory
-	 * intensive, it may be best to switch to a
-	 * {@link android.support.v4.app.FragmentStatePagerAdapter}.
-	 */
 	SectionsPagerAdapter mSectionsPagerAdapter;
-
-	/**
-	 * The {@link ViewPager} that will host the section contents.
-	 */
+	private SlidingMenu menu;
 	ViewPager mViewPager;
+	Context context;
+	static ActionBar actionBar;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,21 +33,22 @@ public class MainActivity extends FragmentActivity implements
 		setContentView(R.layout.activity_main);
 
 		// Set up the action bar.
-		final ActionBar actionBar = getActionBar();
+		actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+		context = this;
+		
+		actionBar.setDisplayHomeAsUpEnabled(true);
+		actionBar.setHomeAsUpIndicator(R.drawable.new_indicator_close);
 
 		// Create the adapter that will return a fragment for each of the three
 		// primary sections of the app.
 		mSectionsPagerAdapter = new SectionsPagerAdapter(
-				getSupportFragmentManager(), getResources());
+				getSupportFragmentManager(), getResources(), this);
 
 		// Set up the ViewPager with the sections adapter.
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
 
-		// When swiping between different sections, select the corresponding
-		// tab. We can also use ActionBar.Tab#select() to do this if we have
-		// a reference to the Tab.
 		mViewPager
 				.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
 					@Override
@@ -55,12 +57,7 @@ public class MainActivity extends FragmentActivity implements
 					}
 				});
 
-		// For each of the sections in the app, add a tab to the action bar.
 		for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
-			// Create a tab with text corresponding to the page title defined by
-			// the adapter. Also specify this Activity object, which implements
-			// the TabListener interface, as the callback (listener) for when
-			// this tab is selected.
 			switch (i) {
 			case 0:
 				actionBar.addTab(actionBar.newTab()
@@ -74,28 +71,67 @@ public class MainActivity extends FragmentActivity implements
 				break;
 			case 2:
 				actionBar.addTab(actionBar.newTab()
-						.setCustomView(R.layout.tab_feed)
-						.setTabListener(this));
+						.setCustomView(R.layout.tab_feed).setTabListener(this));
 				break;
 			case 3:
-				actionBar.addTab(actionBar.newTab()
-						.setCustomView(R.layout.tab_avail)
-						.setTabListener(this));
-				break;
-			case 4:
 				actionBar.addTab(actionBar.newTab()
 						.setCustomView(R.layout.tab_earnpoints)
 						.setTabListener(this));
 				break;
+			case 4:
+				actionBar
+						.addTab(actionBar.newTab()
+								.setCustomView(R.layout.tab_avail)
+								.setTabListener(this));
+				break;
+
 			}
 		}
+
+		menu = new SlidingMenu(this);
+		menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+		menu.setShadowWidthRes(R.dimen.shadow_width);
+		menu.setShadowDrawable(R.drawable.shadow);
+		menu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
+		menu.setFadeDegree(0.35f);
+		menu.attachToActivity(this, SlidingMenu.SLIDING_WINDOW);
+		menu.setMenu(R.layout.menu_frame);
+		getSupportFragmentManager().beginTransaction()
+				.replace(R.id.menu_frame, new SlidingMenuFragment()).commit();
+		menu.setOnOpenListener(new OnOpenListener() {
+
+			@Override
+			public void onOpen() {
+				actionBar.setHomeAsUpIndicator(R.drawable.new_indicator_open);
+			}
+		});
+
+		menu.setOnCloseListener(new OnCloseListener() {
+
+			@Override
+			public void onClose() {
+				actionBar.setHomeAsUpIndicator(R.drawable.new_indicator_close);
+			}
+		});
+
 	}
 
 	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			menu.toggle();
+			break;
+		case R.id.points:
+			Toast.makeText(context,
+					"you have " + item.getTitle().toString() + " points",
+					Toast.LENGTH_LONG).show();
+		}
+		return true;
+	}
+
 	public void onTabSelected(ActionBar.Tab tab,
 			FragmentTransaction fragmentTransaction) {
-		// When the given tab is selected, switch to the corresponding page in
-		// the ViewPager.
 		mViewPager.setCurrentItem(tab.getPosition());
 	}
 
@@ -107,6 +143,27 @@ public class MainActivity extends FragmentActivity implements
 	@Override
 	public void onTabReselected(ActionBar.Tab tab,
 			FragmentTransaction fragmentTransaction) {
+	}
+
+	@Override
+	public void onBackPressed() {
+		if (menu.isMenuShowing()) {
+			menu.showContent();
+		} else {
+			super.onBackPressed();
+		}
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.main_activity_menu, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
+	
+	public void changeTab(){
+		System.out.println("@@@@@@@@@@@@@ " + actionBar);
+		actionBar.setSelectedNavigationItem(4);
 	}
 
 }

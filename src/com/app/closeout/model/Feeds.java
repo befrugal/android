@@ -7,9 +7,18 @@ public class Feeds implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String restaurantName;
 	private String username;
+	private String discount;
 
 	public String getUsername() {
 		return username;
+	}
+
+	public String getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(String discount) {
+		this.discount = discount;
 	}
 
 	public void setUsername(String username) {

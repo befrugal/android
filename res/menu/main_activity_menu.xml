@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/points"
+        android:enabled="true"
+        android:showAsAction="always|withText"
+        android:title="500 Pts"
+        android:visible="true"/>
+
+</menu>

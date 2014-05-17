@@ -7,6 +7,7 @@
     <string name="title_trending">Trending</string>
     <string name="title_feeds">Feeds</string>
     <string name="title_avail">Avail</string>
+    <string name="more">More</string>
     <string name="title_earnpoints">Earn Points</string>
     <string name="search">Search</string>
     <string name="qrscan">Scan QR Code</string>
@@ -24,5 +25,7 @@
     </string-array>
 
     <string name="title_activity_search_result">SearchResultActivity</string>
+    <string name="my_profile">My Profile</string>
+    <string name="edit_profile">Edit Profile</string>
 
 </resources>

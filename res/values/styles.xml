@@ -22,6 +22,7 @@
         <!-- <item name="android:actionBarTabTextStyle">@style/TabTextStyle</item> -->
         <item name="android:actionBarTabStyle">@style/MyTabView</item>
         <item name="android:actionBarTabBarStyle">@style/MyTabBar</item>
+        <item name="android:actionMenuTextColor">#FFFFFF</item>
     </style>
 
     <style name="MyActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
@@ -32,7 +33,7 @@
     <style name="MyActionBar.TitleTextStyle" parent="android:style/TextAppearance.Holo.Widget.ActionBar.Title">
         <item name="android:textColor">#FFFFFF</item>
     </style>
-
+    
     <style name="MyTabView" parent="@android:style/Widget.Holo.Light.ActionBar.TabView">
         <item name="android:background">@drawable/tab_background</item>
         <item name="android:padding">0dp</item>

@@ -41,11 +41,33 @@ public class FragmentFeed extends Fragment {
 			Bundle savedInstanceState) {
 		View layout_feed = inflater.inflate(R.layout.fragment_feed, container, false);
 		
+		ArrayList<String> name = new ArrayList<String>();
+		name.add("Siddhant Jain");
+		name.add("Ashish Singhal");
+		name.add("Rohit Gupta");
+		name.add("Govind Soni");
+		name.add("Brajesh Upadhyay");
+		
+		ArrayList<String> restName = new ArrayList<String>();
+		restName.add("Toit");
+		restName.add("Dominos");
+		restName.add("Hunan");
+		restName.add("California Pizza Kitchen");
+		restName.add("Hard Rock Cafe");
+		
+		ArrayList<String> discount = new ArrayList<String>();
+		discount.add("12");
+		discount.add("20");
+		discount.add("8");
+		discount.add("15");
+		discount.add("10");
+		
 		feedData = new ArrayList<Feeds>();
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 5; i++) {
 			Feeds feedsObj = new Feeds();
-			feedsObj.setRestaurantName("Restaurant no" + (i + 1));
-			feedsObj.setUsername("Username " + (i+1));
+			feedsObj.setRestaurantName(restName.get(i));
+			feedsObj.setUsername(name.get(i));
+			feedsObj.setDiscount(discount.get(i));
 			feedData.add(feedsObj);
 		}
 		

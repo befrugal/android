@@ -3,8 +3,8 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:background="#0F100A"
-    android:weightSum="2"
-    android:padding="10dp" >
+    android:padding="10dp"
+    android:weightSum="3" >
 
     <Button
         android:id="@+id/button_sharedeal"
@@ -13,19 +13,43 @@
         android:layout_marginRight="10dp"
         android:layout_weight="1"
         android:background="@drawable/rounded_corner_explist_button"
-        android:padding="5dp"
+        android:drawableLeft="@drawable/ic_action_social_share"
+        android:drawablePadding="10dp"
+        android:gravity="left|center_vertical"
+        android:paddingLeft="2dp"
         android:text="@string/share"
-        android:textColor="#0F100A" />
+        android:textColor="#0F100A"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/button_availdeal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_weight="1"
         android:background="@drawable/rounded_corner_explist_button"
-        android:padding="5dp"
+        android:drawableLeft="@drawable/ic_action_av_make_available_offline"
+        android:drawablePadding="10dp"
+        android:gravity="left|center_vertical"
+        android:paddingLeft="2dp"
         android:text="@string/title_avail"
-        android:textColor="#0F100A" />
+        android:textColor="#0F100A"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/button_moredeals"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="1"
+        android:background="@drawable/rounded_corner_explist_button"
+        android:drawableLeft="@drawable/ic_action_content_new"
+        android:drawablePadding="10dp"
+        android:gravity="left|center_vertical"
+        android:paddingLeft="2dp"
+        android:text="@string/more"
+        android:textColor="#0F100A"
+        android:textStyle="bold" />
 
 </LinearLayout>

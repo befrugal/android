@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E7E7E7" >
+
+    <ImageView
+        android:id="@+id/image_profile_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/profile_image" />
+
+    <TextView
+        android:id="@+id/textview_profile_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/image_profile_icon"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_toRightOf="@+id/image_profile_icon"
+        android:text="Harman Singh"
+        android:textColor="#3C3C3C"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/seperator1"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/image_profile_icon"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
+        android:background="#3C3C3C" />
+    
+    <Button 
+        android:id="@+id/button_editprofile"
+        android:layout_below="@+id/seperator1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
+        android:background="#00000000"
+        android:text="@string/edit_profile"
+        android:textColor="#3C3C3C"
+        android:drawableLeft="@drawable/ic_social_person"
+        android:gravity="left|center_vertical"
+        />
+    
+    <View
+        android:id="@+id/seperator2"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/button_editprofile"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
+        android:background="#3C3C3C" />
+    
+    <Button 
+        android:id="@+id/button_dummy"
+        android:layout_below="@+id/seperator2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
+        android:background="#00000000"
+        android:text="dummy button"
+        android:textColor="#3C3C3C"
+        android:drawableLeft="@drawable/ic_social_person"
+        android:gravity="left|center_vertical"
+        />
+
+</RelativeLayout>
