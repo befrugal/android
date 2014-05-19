@@ -192,8 +192,12 @@ public class SearchResultAdapter extends BaseExpandableListAdapter implements
 								.get(position).getRestaurantName());
 						editor.putString("RestaurantDeal", restaurantSearchData
 								.get(position).getRestaurantDeal());
+						editor.putString("RestaurantDetail", restaurantSearchData
+								.get(position).getRestaurantDetail());
 						editor.commit();
-						fragmentTrending.changeTab();
+						if(!fromActivity){
+							fragmentTrending.changeTab();							
+						}
 					}
 				});
 		alertBuilder.setNegativeButton("No",

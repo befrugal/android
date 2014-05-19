@@ -1,12 +1,18 @@
 package com.app.closeout.fragments;
 
+import java.util.ArrayList;
+
 import com.app.closeout.R;
+import com.app.closeout.adapter.AvailListAdapter;
+import com.app.closeout.adapter.FeedListAdapter;
+import com.app.closeout.model.RestaurantSearchData;
 
 import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -36,15 +42,29 @@ public class FragmentAvail extends Fragment {
 			Bundle savedInstanceState) {
 		View layout_avail = inflater.inflate(R.layout.fragment_avail,
 				container, false);
+
+		ListView availList = (ListView) layout_avail
+				.findViewById(R.id.list_avail);
+
+		ArrayList<RestaurantSearchData> restaurantSearchData = new ArrayList<RestaurantSearchData>();
+
+		RestaurantSearchData restaurantSearchDataObj = new RestaurantSearchData();
+
 		SharedPreferences sharedPreferences = context.getSharedPreferences(
 				"availedDeals", context.MODE_PRIVATE);
-		System.out.println("!!! "
-				+ sharedPreferences.getString("RestauarntName", ""));
-		System.out.println("!!! "
-				+ sharedPreferences.getString("RestaurantDeal", ""));
-		TextView tv = (TextView) layout_avail.findViewById(R.id.avail_txt);
-		tv.setText(sharedPreferences.getString("RestauarntName", "").toString()
-				+ sharedPreferences.getString("RestaurantDeal", "").toString());
+		restaurantSearchDataObj.setRestaurantDetail(sharedPreferences
+				.getString("RestaurantDetail", "").toString());
+		restaurantSearchDataObj.setRestaurantName(sharedPreferences.getString(
+				"RestauarntName", "").toString());
+		restaurantSearchDataObj.setRestaurantDeal(sharedPreferences.getString(
+				"RestaurantDeal", "").toString());
+		restaurantSearchData.add(restaurantSearchDataObj);
+
+		AvailListAdapter availListAdapter = new AvailListAdapter(
+				restaurantSearchData, context);
+
+		availList.setAdapter(availListAdapter);
+
 		return layout_avail;
 	}
 

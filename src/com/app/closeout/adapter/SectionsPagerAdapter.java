@@ -4,16 +4,16 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.app.closeout.R;
 import com.app.closeout.fragments.FragmentAvail;
 import com.app.closeout.fragments.FragmentEarnPoints;
 import com.app.closeout.fragments.FragmentFeed;
-import com.app.closeout.fragments.FragmentTrending;
 import com.app.closeout.fragments.FragmentSearch;
+import com.app.closeout.fragments.FragmentTrending;
 
-public class SectionsPagerAdapter extends FragmentPagerAdapter {
+public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
 
 	Resources res;
 	Context context;
