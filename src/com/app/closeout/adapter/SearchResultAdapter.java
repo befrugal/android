@@ -6,9 +6,11 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Handler;
+import android.sax.StartElementListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -19,7 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.closeout.R;
-import com.app.closeout.fragments.FragmentFeed;
+import com.app.closeout.RestaurantActivity;
 import com.app.closeout.fragments.FragmentTrending;
 import com.app.closeout.model.RestaurantSearchData;
 
@@ -134,6 +136,9 @@ public class SearchResultAdapter extends BaseExpandableListAdapter implements
 		restaurantDetail.setText(restaurantSearchData.get(groupPosition)
 				.getRestaurantDetail());
 
+		restaurantName.setTag(groupPosition);
+		restaurantName.setOnClickListener(this);
+
 		return convertView;
 	}
 
@@ -149,6 +154,8 @@ public class SearchResultAdapter extends BaseExpandableListAdapter implements
 
 	@Override
 	public void onClick(View v) {
+		int p;
+		Intent intent;
 		switch (v.getId()) {
 		case R.id.button_availdeal:
 			final int position = (Integer) v.getTag();
@@ -163,11 +170,27 @@ public class SearchResultAdapter extends BaseExpandableListAdapter implements
 					progressDialog.dismiss();
 					showAlert(position);
 				}
-			}, 2500);
+			}, 1500);
 			break;
 		case R.id.button_sharedeal:
 			break;
 		case R.id.button_moredeals:
+			p = (Integer) v.getTag();
+			intent = new Intent(context, RestaurantActivity.class);
+			intent.putExtra("restName", restaurantSearchData.get(p)
+					.getRestaurantName());
+			intent.putExtra("restDetail", restaurantSearchData.get(p)
+					.getRestaurantDetail());
+			context.startActivity(intent);
+			break;
+		case R.id.textview_restaurant_name:
+			p = (Integer) v.getTag();
+			intent = new Intent(context, RestaurantActivity.class);
+			intent.putExtra("restName", restaurantSearchData.get(p)
+					.getRestaurantName());
+			intent.putExtra("restDetail", restaurantSearchData.get(p)
+					.getRestaurantDetail());
+			context.startActivity(intent);
 			break;
 		}
 	}
@@ -192,11 +215,12 @@ public class SearchResultAdapter extends BaseExpandableListAdapter implements
 								.get(position).getRestaurantName());
 						editor.putString("RestaurantDeal", restaurantSearchData
 								.get(position).getRestaurantDeal());
-						editor.putString("RestaurantDetail", restaurantSearchData
-								.get(position).getRestaurantDetail());
+						editor.putString("RestaurantDetail",
+								restaurantSearchData.get(position)
+										.getRestaurantDetail());
 						editor.commit();
-						if(!fromActivity){
-							fragmentTrending.changeTab();							
+						if (!fromActivity) {
+							fragmentTrending.changeTab();
 						}
 					}
 				});

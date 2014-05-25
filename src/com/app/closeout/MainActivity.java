@@ -161,9 +161,8 @@ public class MainActivity extends FragmentActivity implements
 		return super.onCreateOptionsMenu(menu);
 	}
 	
-	public void changeTab(){
-		System.out.println("@@@@@@@@@@@@@ " + actionBar);
+	public void moveToAvail(){
 		actionBar.setSelectedNavigationItem(4);
 	}
-
+	
 }

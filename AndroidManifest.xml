@@ -32,9 +32,13 @@
         </activity>
         <activity
             android:name="com.app.closeout.SearchResultActivity"
+            android:label="@string/title_activity_search_result"
             android:screenOrientation="portrait"
-            android:theme="@style/TabTheme"
-            android:label="@string/title_activity_search_result" >
+            android:theme="@style/TabTheme" >
+        </activity>
+        <activity
+            android:name="com.app.closeout.RestaurantActivity"
+            android:label="@string/title_activity_resturant" >
         </activity>
     </application>
 

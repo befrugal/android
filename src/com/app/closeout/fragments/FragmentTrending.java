@@ -139,7 +139,7 @@ public class FragmentTrending extends Fragment {
 	
 	public void changeTab(){
 		MainActivity mainActivity = new MainActivity();
-		mainActivity.changeTab();
+		mainActivity.moveToAvail();
 	}
 	
 }
