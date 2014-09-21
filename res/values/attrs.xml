@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="fontStyle" format="enum">
+        <enum name="roboto_r" value="0" />
+        <enum name="roboto_r_i" value="1" />
+        <enum name="roboto_b" value="2" />
+        <enum name="roboto_b_i" value="3" />
+        <enum name="pacifico" value="4" />
+    </attr>
+
+    <declare-styleable name="Scrollbar">
+        <attr name="backgroundColor" format="color" />
+        <attr name="indicatorColor" format="color" />
+    </declare-styleable>
+    <declare-styleable name="TypefacedTextView">
+        <attr name="fontStyle" />
+        <attr name="shadowDx" format="dimension" />
+        <attr name="shadowDy" format="dimension" />
+        <attr name="shadowRadius" format="dimension" />
+        <attr name="shadowColor" format="color" />
+    </declare-styleable>
+    <declare-styleable name="DrawInsetsFrameLayout">
+        <attr name="topInsetBackground" format="reference|color" />
+        <attr name="bottomInsetBackground" format="reference|color" />
+        <attr name="sideInsetBackground" format="reference|color" />
+        <attr name="insetBackground" format="reference|color" />
+    </declare-styleable>
+
+</resources>

@@ -5,7 +5,6 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.Watson.OnOptionsItemSelectedListener;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -13,10 +12,11 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.app.closeout.adapter.SectionsPagerAdapter;
+import com.app.closeout.fragments.FragmentSearch;
 import com.app.closeout.fragments.SlidingMenuFragment;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
-import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu.OnOpenListener;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu.OnCloseListener;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu.OnOpenListener;
 
 public class MainActivity extends FragmentActivity implements
 		ActionBar.TabListener {
@@ -26,6 +26,9 @@ public class MainActivity extends FragmentActivity implements
 	ViewPager mViewPager;
 	Context context;
 	static ActionBar actionBar;
+	public static boolean fromTwitter;
+	static int points = 500;
+	static Menu optionsMenu;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +39,7 @@ public class MainActivity extends FragmentActivity implements
 		actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		context = this;
-		
+
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setHomeAsUpIndicator(R.drawable.new_indicator_close);
 
@@ -117,14 +120,23 @@ public class MainActivity extends FragmentActivity implements
 	}
 
 	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.main_activity_menu, menu);
+		MenuItem pointsMenu = menu.findItem(R.id.points);
+		pointsMenu.setTitle(points + " Pts");
+		optionsMenu = menu;
+		return true;
+	}
+
+	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			menu.toggle();
 			break;
 		case R.id.points:
-			Toast.makeText(context,
-					"you have " + item.getTitle().toString() + " points",
+			Toast.makeText(context, "You have " + item.getTitle().toString(),
 					Toast.LENGTH_LONG).show();
 		}
 		return true;
@@ -154,15 +166,26 @@ public class MainActivity extends FragmentActivity implements
 		}
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.main_activity_menu, menu);
-		return super.onCreateOptionsMenu(menu);
-	}
-	
-	public void moveToAvail(){
+	public void moveToAvail() {
 		actionBar.setSelectedNavigationItem(4);
 	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+
+		if (fromTwitter) {
+			FragmentSearch search = new FragmentSearch();
+			search.afterTwitter(context);
+			fromTwitter = false;
+		}
+
+	}
 	
+	public static void updatePoints(){
+		points += 200;
+		MenuItem item = optionsMenu.findItem(R.id.points);
+		item.setTitle(points + " Pts");
+	}
+
 }

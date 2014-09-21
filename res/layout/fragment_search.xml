@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res/com.app.closeout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/food_img1" >
@@ -8,33 +9,40 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#AA000000" />
-
-    <Button
-        android:id="@+id/button_search"
+    
+    <com.app.closeout.TypefaceTextview
+        android:id="@+id/textview_claimdeal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/claimdeal"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_corner_search"
-        android:text="@string/search"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        android:textColor="#FFFFFF"
+        android:textSize="40sp"
+        custom:fontStyle="pacifico"
+        custom:shadowColor="#8000"
+        custom:shadowDx="0dp"
+        custom:shadowDy="1dp"
+        custom:shadowRadius="3dp" />
 
-    <Button
+    <com.app.closeout.TypefaceButton
         android:id="@+id/button_qrscan"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button_search"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/rounded_corner_search"
-        android:text="@string/qrscan"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:textStyle="bold" />
-
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/textview_claimdeal"
+        android:background="@drawable/roundbutton"
+        android:layout_centerHorizontal="true"
+        android:text="@string/scan"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        custom:fontStyle="pacifico"
+        custom:shadowColor="#8000"
+        custom:shadowDx="0dp"
+        custom:shadowDy="1dp"
+        custom:shadowRadius="3dp" />
+    
 </RelativeLayout>

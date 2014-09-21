@@ -18,7 +18,8 @@ public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
 	Resources res;
 	Context context;
 
-	public SectionsPagerAdapter(FragmentManager fm, Resources res, Context context) {
+	public SectionsPagerAdapter(FragmentManager fm, Resources res,
+			Context context) {
 		super(fm);
 		this.res = res;
 		this.context = context;
@@ -40,12 +41,6 @@ public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
 		case 2:
 			fragment = new FragmentFeed();
 			break;
-		case 3:
-			fragment = new FragmentEarnPoints();
-			break;
-		case 4:
-			fragment = new FragmentAvail();
-			break;
 		}
 		return fragment;
 	}
@@ -53,22 +48,18 @@ public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
 	@Override
 	public int getCount() {
 		// Show 5 total pages.
-		return 5;
+		return 3;
 	}
 
 	@Override
 	public CharSequence getPageTitle(int position) {
 		switch (position) {
 		case 0:
-			return res.getString(R.string.title_search);
+			return res.getString(R.string.title_home);
 		case 1:
 			return res.getString(R.string.title_trending);
 		case 2:
-			return res.getString(R.string.title_feeds);
-		case 3:
-			return res.getString(R.string.title_avail);
-		case 4:
-			return res.getString(R.string.title_earnpoints);
+			return res.getString(R.string.title_search);
 		}
 		return null;
 	}

@@ -84,16 +84,16 @@ public class FragmentTrending extends Fragment {
 		detail.add("40, Off MG Road, St. Marks Road");
 		
 		ArrayList<String> deal = new ArrayList<String>();
-		deal.add("10% for 500 points");
-		deal.add("10% for 400 points");
-		deal.add("8% for 400 points");
-		deal.add("10% for 400 points");
-		deal.add("10% for 600 points");
-		deal.add("12% for 400 points");
-		deal.add("10% for 500 points");
-		deal.add("10% for 400 points");
-		deal.add("12 for 400 points");
-		deal.add("10% for 500 points");
+		deal.add("Get one complimentary drink for 150 points");
+		deal.add("Get a starter free for 100 points");
+		deal.add("Rs. 250 off for 120 points");
+		deal.add("Get a dessert free for 75 points");
+		deal.add("Rs. 400 off on your bill for 130 points");
+		deal.add("Get a starter free for 80 points");
+		deal.add("Get a free pickup and drop for 400 points");
+		deal.add("Get a free pizza for 250 points");
+		deal.add("Get a free coffee for 50 points");
+		deal.add("Get free beer for 125 points");
 		
 		restaurantSearchData = new ArrayList<RestaurantSearchData>();
 		for (int i = 0; i < 10; i++) {

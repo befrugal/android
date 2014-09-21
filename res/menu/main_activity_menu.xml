@@ -5,7 +5,7 @@
         android:id="@+id/points"
         android:enabled="true"
         android:showAsAction="always|withText"
-        android:title="500 Pts"
+        android:title=""
         android:visible="true"/>
 
 </menu>

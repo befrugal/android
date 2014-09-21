@@ -4,6 +4,14 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="18" />
@@ -40,6 +48,20 @@
             android:name="com.app.closeout.RestaurantActivity"
             android:label="@string/title_activity_resturant" >
         </activity>
+        <activity
+            android:name="com.dm.zbar.android.scanner.ZBarScannerActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape" />
+
+        <service android:name="com.parse.PushService" />
+
+        <receiver android:name="com.app.closeout.MyCustomReceiver" >
+            <intent-filter>
+                <action android:name="com.example.updateView" />
+                <action android:name="com.example.updateBooking" />
+                <action android:name="com.example.updateMessage" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

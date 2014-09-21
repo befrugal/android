@@ -1,9 +1,6 @@
 package com.app.closeout.adapter;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import com.app.closeout.R;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.app.closeout.R;
 
 public class SuggestionListAdapter extends BaseAdapter {
 
